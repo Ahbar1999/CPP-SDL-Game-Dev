@@ -1,4 +1,6 @@
 ﻿  Game.cpp
-  Player.cpp
+  SDLGameObject.cpp
+  TextureManager.cpp
+  main.cpp
   Generating Code...
   Chapter3.vcxproj -> C:\openglProjects\LearnSDL\x64\Debug\Chapter3.exe

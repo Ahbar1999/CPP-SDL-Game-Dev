@@ -1,0 +1,6 @@
+﻿  Player.cpp
+C:\openglProjects\LearnSDL\Chapter4\Player.cpp(27,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\Player.cpp(32,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\Player.cpp(38,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\Player.cpp(44,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Chapter4.vcxproj -> C:\openglProjects\LearnSDL\x64\Debug\Chapter4.exe

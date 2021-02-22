@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "InputHandler.h"
+#include "GameStateMachine.h"
 
 typedef class Game
 {
@@ -37,6 +38,12 @@ public:
 	void clean();
 	bool running() { return m_bRunning; }
 	void quit();
+
+	GameStateMachine* m_pGameStateMachine;
+	GameStateMachine* getStateMachine()
+	{
+		return m_pGameStateMachine;
+	}
 
 	int m_currentFrame;
 	int m_currentRow;

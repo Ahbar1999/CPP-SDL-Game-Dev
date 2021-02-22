@@ -63,6 +63,14 @@ public:
 	//a clean function which will clear any devices we have initialized
 	void clean();
 
+	void reset()
+	{
+		for (int i = 0; i < m_mouseButtonStates.size(); i++)
+		{
+			m_mouseButtonStates[i] = false;
+		}
+	}
+
 private:
 	InputHandler() 
 	{	

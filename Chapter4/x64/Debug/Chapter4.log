@@ -1,6 +1,12 @@
-﻿  Player.cpp
-C:\openglProjects\LearnSDL\Chapter4\Player.cpp(27,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\openglProjects\LearnSDL\Chapter4\Player.cpp(32,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\openglProjects\LearnSDL\Chapter4\Player.cpp(38,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\openglProjects\LearnSDL\Chapter4\Player.cpp(44,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  GameOverState.cpp
+  PlayState.cpp
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(48,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(49,37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(50,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(51,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(54,33): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(55,37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(56,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\openglProjects\LearnSDL\Chapter4\PlayState.cpp(57,38): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
   Chapter4.vcxproj -> C:\openglProjects\LearnSDL\x64\Debug\Chapter4.exe

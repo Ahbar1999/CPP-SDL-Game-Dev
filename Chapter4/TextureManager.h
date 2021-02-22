@@ -23,6 +23,8 @@ public:
 
 	//texture maps/ maps are basically like dictioanry/ key valued pairs
 	std::map<std::string, SDL_Texture*> m_textureMap;
+	
+	void clearFromTextureMap(std::string id);
 
 	//Making this class a singleton
 	static TextureManager* Instance()

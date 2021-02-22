@@ -1,6 +1,8 @@
 
 #include "Player.h"
 #include "InputHandler.h"
+#include "TextureManager.h"
+#include "Game.h"
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
@@ -10,8 +12,17 @@ Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 
 void Player::draw()
 {
-	//Using SDLGameObject class to draw		
-	SDLGameObject::draw();
+	//NOTE:
+	//NOT using SDLGameObject class to draw	due to flip global flip issues	
+	//SDLGameObject::draw();
+	if (m_velocity.getX() > 0)
+	{
+		TextureManager::Instance()->drawFrame(m_textureID, (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, TheGame::Instance()->getRenderer());
+	}
+	else
+	{
+		TextureManager::Instance()->drawFrame(m_textureID, (Uint32)m_position.getX(), (Uint32)m_position.getY(), m_width, m_height, m_currentRow, m_currentFrame, TheGame::Instance()->getRenderer(), SDL_FLIP_HORIZONTAL);
+	}
 }
 
 void Player::handleInput()
@@ -69,13 +80,20 @@ void Player::handleInput()
 	{
 		m_velocity.setX(2);
 	}
+
+	//Vector2D* target = TheInputHandler::Instance()->getMousePosition();
+
+	//Finding relative velocity wrt position
+	//m_velocity = *target - m_position;
+
+	//m_velocity /= 50;
 }
 
 void Player::update()
 {
 	//Mouse tracking
 	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
-	m_velocity = (*vec - m_position);
+	//m_velocity = (*vec - m_position);
 	
 	handleInput(); // add our function
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));

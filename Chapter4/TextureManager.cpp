@@ -54,4 +54,9 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
+void TextureManager::clearFromTextureMap(std::string id)
+{
+	//This just deletes the pair from the Map i think
+	m_textureMap.erase(id);
+}
 TextureManager* TextureManager::s_pInstance = 0;

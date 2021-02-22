@@ -12,6 +12,23 @@ public:
 	virtual void update();
 	virtual void clean();
 
+	//Getters
+
+	//NOTE: returning by reference, probably so we can modify
+	Vector2D& getPosition()
+	{
+		return m_position;
+	}
+
+	int getWidth()
+	{
+		return m_height;
+	}
+	int getHeight()
+	{
+		return m_width;
+	}
+
 protected:
 	
 	//old coordinates implementation
@@ -25,6 +42,7 @@ protected:
 	Vector2D m_velocity;
 	Vector2D m_accelaration;
 
+
 	int m_height;
 	int m_width;
 
@@ -32,6 +50,5 @@ protected:
 	int m_currentFrame;
 
 	std::string m_textureID;
-
 };
 

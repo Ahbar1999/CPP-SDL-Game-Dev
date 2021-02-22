@@ -1,5 +1,6 @@
 #include "Game.h"
-
+#include "MenuState.h"
+#include "PlayState.h"
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
@@ -36,23 +37,25 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			return false;
 		}
 
-		//Initialising InputManager class
-		TheInputHandler::Instance()->initializeJoysticks();
-				
+		//Initialise joysticks if joysticks implementation is available 
+		//TheInputHandler::Instance()->initializeJoysticks();
 
 		std::cout << "Init Success! " << std::endl;
 		m_bRunning = true;
 		
 			
 		// to load
-		if (!TheTextureManager::Instance()->load("Assets/run-anim.png", "animate", m_pRenderer))
-		{
-			return false;
-		}
+		//if (!TheTextureManager::Instance()->load("Assets/run-anim.png", "animate", m_pRenderer))
+		//{
+			//return false;
+		//}
 		
-		m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 73, 92, "animate")));
+		//m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 73, 92, "animate")));
 
 		//m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 73, 92, "animate")));
+
+		m_pGameStateMachine = new GameStateMachine();
+		m_pGameStateMachine->changeState(new MenuState());
 
 		return true;
 	}
@@ -64,33 +67,49 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 }
 
-
 Game* Game::s_pInstance = 0;
 
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
 
-	for (std::vector<GameObject* >::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->draw();
-	}
+	//NOTE: Instead of drawing through the list of gameObjects we will now draw with states
+	//      and we will move this draw function/loop to state render functions
+	/*
+		for (std::vector<GameObject* >::size_type i = 0; i < m_gameObjects.size(); i++)
+		{
+			m_gameObjects[i]->draw();
+		}
+	*/
+
+	m_pGameStateMachine->render();
 
 	SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update()
-{		
-	for (std::vector<GameObject* >::size_type i = 0; i < m_gameObjects.size(); i++)
-	{
-		m_gameObjects[i]->update();
-	}
+{	
+	//Same with update function
+	/*
+		for (std::vector<GameObject* >::size_type i = 0; i < m_gameObjects.size(); i++)
+		{
+			m_gameObjects[i]->update();
+		}
+	*/
+
+	m_pGameStateMachine->update();
 }
 
 void Game::handleEvents()
 {
 	//We'll let TheInputHandler class do the work 
 	TheInputHandler::Instance()->update();
+	
+	//Changing states prototype
+	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
+	{
+		m_pGameStateMachine->changeState(new PlayState());
+	}
 }
 
 void Game::quit()
